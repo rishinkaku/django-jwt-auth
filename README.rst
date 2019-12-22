@@ -30,7 +30,13 @@ Quick start
         'jwt_auth.authenticate.JWTBackend',
     ]
     
-4. Set "JWT_AUTH_PRIVATE_KEY" and "JWT_AUTH_PUBLIC_KEY" which has to be a pem formatted rsa keypair (create it like [this](https://gist.github.com/ygotthilf/baa58da5c3dd1f69fae9))
+4. Set "JWT_AUTH_PRIVATE_KEY" and "JWT_AUTH_PUBLIC_KEY" which has to be a pem formatted rsa keypair (create it like this::
+
+    ssh-keygen -t rsa -b 4096 -m PEM -f jwtRS256.key
+    # Don't add passphrase
+    openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
+    cat jwtRS256.key
+    cat jwtRS256.key.pub
 
 5. Include the jwt_auth URLconf in your project urls.py like this::
     path('auth/',include('jwt_auth.urls')),
