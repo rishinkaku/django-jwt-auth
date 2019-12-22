@@ -39,6 +39,7 @@ Quick start
     cat jwtRS256.key.pub
 
 5. Include the jwt_auth URLconf in your project urls.py like this::
+
     path('auth/',include('jwt_auth.urls')),
     
 6. Run `python manage.py migrate` to create the needed models.
